@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.themadstatter.pathfinder</groupId>
+  <artifactId>JRate</artifactId>
+  <version>1.5.0.0</version> <!-- -1.0-SNAPSHOT -->
+
+  <name>JRate</name>
+  <url>https://github.com/the-mad-statter/JRate</url>
+  
+  <organization>
+    <name>The Mad Statter</name>
+  </organization>
+  <inceptionYear>2009</inceptionYear>
+  <description>JRate is a Java program for collecting pairwise relatedness ratings.</description>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.mainClass>com.themadstatter.pathfinder.JRate</project.mainClass>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.11.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Optionally: parameterized tests support -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.4.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.4.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.12.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.6.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>launch4j-maven-plugin</artifactId>
+          <version>2.6.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>appbundle-maven-plugin</artifactId>
+          <version>1.2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    
+    <plugins>
+    
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Main-Class>${project.mainClass}</Main-Class>
+          </manifestEntries>
+          </archive>
+          <includes>
+            <include>**/com/themadstatter/pathfinder/*</include>
+            <include>**/exp/*</include>
+            <include>**/img/*</include>
+          </includes>
+        </configuration>
+      </plugin>
+    
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+        <version>2.6.0</version>
+        <executions>
+          <execution>
+            <id>l4j-clui</id>
+            <phase>package</phase>
+            <goals>
+              <goal>launch4j</goal>
+            </goals>
+            <configuration>
+              <headerType>gui</headerType>
+              <!--<headerType>console</headerType>-->
+              <jar>target/${project.build.finalName}.jar</jar>
+              <outfile>target/${project.build.finalName}.exe</outfile>
+              <errTitle>${project.name}</errTitle>
+              <icon>target/classes/ics/pencil.ico</icon>
+              <jre><path>%JAVA_HOME%;%PATH%</path></jre>
+              <versionInfo>
+                <fileVersion>${project.version}</fileVersion>
+                <txtFileVersion>${project.version}</txtFileVersion>
+                <fileDescription>${project.description}</fileDescription>
+                <copyright>© ${project.inceptionYear} ${project.organization.name}</copyright>
+                <productVersion>${project.version}</productVersion>
+                <txtProductVersion>${project.version}</txtProductVersion>
+                <productName>${project.name}</productName>
+                <companyName>${project.organization.name}</companyName>
+                <internalName>${project.name}</internalName>
+                <originalFilename>${project.build.finalName}.exe</originalFilename>
+              </versionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+        
+      <plugin>
+        <groupId>sh.tak.appbundler</groupId>
+        <artifactId>appbundle-maven-plugin</artifactId>
+        <version>1.2.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+              <goals>
+                <goal>bundle</goal>
+              </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>${project.mainClass}</mainClass>
+          <!--<dictionaryFile>Info.plist</dictionaryFile>-->
+          <iconFile>ics/icon.icns</iconFile>
+          <!--<jrePath>${jre-folder}</jrePath>-->
+          <generateDiskImageFile>false</generateDiskImageFile>
+          <additionalResources>
+            <!--add resources to the dmg file-->
+            <fileSet>
+              <directory>target/classes/exp</directory>
+              <includes>
+                <include>*.txt</include>
+              </includes>
+            </fileSet>
+          </additionalResources>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>mk-dist-win-dir</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/distribution/win</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}</directory>
+                  <includes>
+                    <include>${project.build.finalName}.exe</include>
+                  </includes>
+                  <!-- Optional: Enable filtering if you need to replace properties in copied files -->
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${project.build.directory}/classes/exp</directory>
+                  <includes>
+                    <include>endingInstructions.txt</include>
+                    <include>startingInstructions.txt</include>
+                    <include>terms.txt</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>${basedir}/src/readme</directory>
+                  <includes>
+                    <include>README.pdf</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>mk-dist-lin-dir</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/distribution/lin</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}</directory>
+                  <includes>
+                    <include>${project.build.finalName}.jar</include>
+                  </includes>
+                  <!-- Optional: Enable filtering if you need to replace properties in copied files -->
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${project.build.directory}/classes/exp</directory>
+                  <includes>
+                    <include>endingInstructions.txt</include>
+                    <include>startingInstructions.txt</include>
+                    <include>terms.txt</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>${basedir}/src/readme</directory>
+                  <includes>
+                    <include>README.pdf</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>mk-dist-mac-dir</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/distribution/mac</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/${project.build.finalName}</directory>
+                </resource>
+                <resource>
+                  <directory>${project.build.directory}/classes/exp</directory>
+                  <includes>
+                    <include>endingInstructions.txt</include>
+                    <include>startingInstructions.txt</include>
+                    <include>terms.txt</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>${basedir}/src/readme</directory>
+                  <includes>
+                    <include>README.pdf</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+    </plugins>
+  </build>
+</project>

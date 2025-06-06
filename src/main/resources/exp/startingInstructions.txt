@@ -1,0 +1,13 @@
+Your task on the computer is to make judgments about the "relatedness" of pairs of terms that have to do with your work as a team.  There are several ways one might think about the terms being judged.  For instance, two terms might be related because they share common features or because they frequently occur together. For this task, think about the terms as they relate to performing Fleet Command as a team.
+
+YOU SHOULD BASE YOUR RELATEDNESS JUDGMENTS ON HOW THE TERMS WORK TOGETHER TO HELP YOUR TEAM PERFORM EFFECTIVELY.
+
+The major goal of your team in performing Fleet Command is to maximize your mission effectiveness scores.  This is accomplished by working together effectively as a team.  Thus, when making your relatedness judgments, you should think about the terms in relation to performing Fleet Command as a team.
+
+Each pair of terms will be presented on the screen along with a "relatedness" scale. You can think of the points along the scale as  representing degrees of relatedness ranging from "1", not at all related to "9", highly related. 
+
+You are to indicate your judgment of relatedness for each pair of terms by pressing the number key that represents your rating. Upon responding, a bar marker will move directly above the number you pressed. If you wish to change your rating, simply press another number. When you are satisfied with the rating you have given, press the <SPACE BAR> to enter your response.  Following this, the next pair of terms will be displayed.
+
+A complete list of terms will be presented prior to beginning the task.   This will give you a general idea of the scope of the teamwork terms you  will be rating.  You will also be provided with a term definition sheet  to reference while making your ratings. Please rate the relatedness of  the terms based on the definitions provided, NOT on what the terms might  mean to you.
+
+WHEN MAKING YOUR RATINGS, REMEMBER BACK TO PERFORMING FLEET COMMAND AS A TEAM, AND THINK ABOUT HOW THE TERMS ARERELATED IN ACCOMPLISHING THE GOAL OF MAXIMIZING YOUR TEAM'S PERFORMANCE.

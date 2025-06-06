@@ -1,0 +1,129 @@
+
+## JRate <img src="img/pencil.png" align="right" width="125px" />
+
+[![Project Status: Inactive - The project has reached a stable, usable
+state but is no longer being actively developed; support/maintenance
+will be provided as time
+allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
+![GitHub release (with
+filter)](https://img.shields.io/github/v/release/the-mad-statter/JRate)
+![GitHub last commit
+(branch)](https://img.shields.io/github/last-commit/the-mad-statter/JRate)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+## Overview
+
+JRate is a Java-based emulation of the PCKnot Rate Program (©1998)
+developed by McDonald, Schvaneveldt, and Sitze. The original software is
+available through Interlink Inc. (525 W Gold View Dr, Tucson, AZ 85737
+or [interlinkinc.net](interlinkinc.net)).
+
+JRate was initially developed to provide a cross-platform alternative to
+the original Windows-only software, enabling broader accessibility
+through compatibility with any system running Java Runtime Environment
+(JRE) version 1.4.2 or higher. Beyond cross-platform support, JRate
+introduces a more visually appealing user interface and originated as a
+side project during thesis research.
+
+The primary function of JRate is to collect similarity ratings for all
+possible pairings of terms from a predefined list. The output is
+generated in a format compatible with PCKnot (.PRX files), including
+additional metadata such as the date and total elapsed time (in
+milliseconds) of the rating session.
+
+## Installation
+
+Precompiled executables are available for Windows, Linux, and MacOS in
+[releases](https://github.com/the-mad-statter/JRate/releases).
+
+If you wish to build from source, clone the repository and use [Apache
+Maven](https://maven.apache.org/):
+
+    mvn package
+
+Distribution files should be produced under /target/distribution
+
+## Configuration
+
+JRate requires three customizable text files to be located in the
+application’s root directory. These files can be empty but must be
+present. In their absence, default example content will be used.
+
+### 1. `startingInstructions.txt`
+
+This file defines the initial instructions displayed to participants
+after they successfully enter a valid ID. Instructions are presented in
+a scrollable text box with no restriction on length.
+
+### 2. `terms.txt`
+
+This file contains the list of terms to be rated. JRate reads the list,
+generates all unique pairs, and presents them randomly to the
+participant for similarity ratings. Results are saved in a half-matrix
+format, readable by PCKnot.
+
+**Important:** The total number of pairwise comparisons is calculated
+using the formula: **N × (N - 1) / 2**, where *N* is the number of
+terms. To avoid participant fatigue, it is recommended to limit the list
+to 15 terms or fewer, which results in 105 pairwise comparisons.
+
+### 3. `endingInstructions.txt`
+
+This file contains the final instructions shown upon task completion.
+Like the starting instructions, this content is displayed in a
+scrollable window and may be of any length. It is typically used for
+debriefing.
+
+## Rating Task Description
+
+Upon launching JRate, participants are prompted to enter an
+identification code consisting of any alphanumeric characters. They are
+then required to re-enter the code for verification. If the two entries
+do not match, the participant is prompted to try again until a valid
+match is made. This step prevents input errors and ensures consistency,
+as the ID is used as the data file name.
+
+If a file with the entered ID already exists (e.g., `foobar.prx`), the
+software automatically appends a number to create a unique filename
+(`foobar1.prx`, `foobar2.prx`, etc.).
+
+Once the ID is confirmed, the participant views the starting
+instructions followed by the rating task.
+
+<img src="img/ratingtask.png" width="400px" />
+
+Participants are shown two terms at a time and asked to rate their
+similarity on a scale from 1 to 9. Ratings can be submitted either by
+selecting a radio button or by pressing the corresponding number key.
+The participant then advances to the next pair using the Next button,
+the Enter key, or the Spacebar.
+
+The interface clears the previous selection before displaying a new pair
+of terms, and it does not allow advancement without a completed rating.
+A progress indicator is displayed in the lower-right corner to track
+task completion.
+
+After all term pairs have been rated, the participant is shown the
+ending instructions.
+
+## About The Mad Statter <img src="img/themadstatter.png" align="right" width="125px" />
+
+[The Mad Statter](https://www.themadstatter.com) is a premier
+statistical consulting and programming firm dedicated to delivering
+rigorous, data-driven solutions tailored to meet the unique needs of
+researchers, businesses, and organizations. Combining deep expertise in
+statistics, advanced programming skills, and industry best practices,
+The Mad Statter empowers clients to unlock insights, optimize
+decision-making, and drive impactful outcomes.
+
+Our services span study design, data management, statistical analysis,
+predictive modeling, and visualization, leveraging a wide range of
+software platforms and programming languages. Whether supporting
+academic research, clinical trials, market research, or operational
+analytics, The Mad Statter provides clear, actionable results with an
+emphasis on quality, transparency, and collaboration.
+
+At The Mad Statter, we are passionate about transforming complex data
+challenges into streamlined, understandable solutions — helping you make
+smarter decisions with confidence.
