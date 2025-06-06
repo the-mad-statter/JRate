@@ -1,5 +1,5 @@
 
-## JRate <img src="img/pencil.png" align="right" width="125px" />
+## JRate <img src="src/readme/img/pencil.png" align="right" width="125px" />
 
 [![Project Status: Inactive - The project has reached a stable, usable
 state but is no longer being actively developed; support/maintenance
@@ -16,8 +16,9 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 
 JRate is a Java-based emulation of the PCKnot Rate Program (©1998)
 developed by McDonald, Schvaneveldt, and Sitze. The original software is
-available through Interlink Inc. (525 W Gold View Dr, Tucson, AZ 85737
-or [interlinkinc.net](interlinkinc.net)).
+available through Interlink Inc. (5114 Copper Bar Rd, Las Cruces, NM
+88011 or
+[interlinkinc.net](https://research-collective.com/PFWeb/index.php)).
 
 JRate was initially developed to provide a cross-platform alternative to
 the original Windows-only software, enabling broader accessibility
@@ -91,7 +92,7 @@ software automatically appends a number to create a unique filename
 Once the ID is confirmed, the participant views the starting
 instructions followed by the rating task.
 
-<img src="img/ratingtask.png" width="400px" />
+<img src="src/readme/img/ratingtask.png" width="400px" />
 
 Participants are shown two terms at a time and asked to rate their
 similarity on a scale from 1 to 9. Ratings can be submitted either by
@@ -107,7 +108,7 @@ task completion.
 After all term pairs have been rated, the participant is shown the
 ending instructions.
 
-## About The Mad Statter <img src="img/themadstatter.png" align="right" width="125px" />
+## About The Mad Statter <img src="src/readme/img/themadstatter.png" align="right" width="125px" />
 
 [The Mad Statter](https://www.themadstatter.com) is a premier
 statistical consulting and programming firm dedicated to delivering
