@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 ## JRate <img src="src/readme/img/pencil.png" align="right" width="125px" />
 
 [![Project Status: Inactive - The project has reached a stable, usable
@@ -51,13 +59,13 @@ JRate requires three customizable text files to be located in the
 application’s root directory. These files can be empty but must be
 present. In their absence, default example content will be used.
 
-### 1. `startingInstructions.txt`
+### 1. startingInstructions.txt
 
 This file defines the initial instructions displayed to participants
 after they successfully enter a valid ID. Instructions are presented in
 a scrollable text box with no restriction on length.
 
-### 2. `terms.txt`
+### 2. terms.txt
 
 This file contains the list of terms to be rated. JRate reads the list,
 generates all unique pairs, and presents them randomly to the
@@ -69,7 +77,7 @@ using the formula: **N × (N - 1) / 2**, where *N* is the number of
 terms. To avoid participant fatigue, it is recommended to limit the list
 to 15 terms or fewer, which results in 105 pairwise comparisons.
 
-### 3. `endingInstructions.txt`
+### 3. endingInstructions.txt
 
 This file contains the final instructions shown upon task completion.
 Like the starting instructions, this content is displayed in a

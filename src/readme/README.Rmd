@@ -2,17 +2,34 @@
 output: 
   github_document: default
   pdf_document: default
+header-includes:
+  - \usepackage{graphicx}
+  - \usepackage{tikz}
+  - \usetikzlibrary{calc}
+  - \usepackage[margin=1in]{geometry}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-cat(r"(\includegraphics[height=36px]{img/pencil.png})")
-```
-
 ## JRate <img src="src/readme/img/pencil.png" align="right" width="125px" />
+
+```{r, include=knitr::is_latex_output(), results="asis"}
+cat(r"(
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north east] (img) at ($(current page.north east) + (-1in,-2cm)$)
+        {\includegraphics[width=0.1\textwidth]{img/pencil.png}};
+
+    \coordinate (lineY) at ($(img.center) + (-3in, -0.25)$);
+    \coordinate (lineStart) at ($(current page.west) + (1in,0)$);
+    \coordinate (lineEnd) at ($(img.west) + (-0.5cm,0)$);
+
+    \draw[thick] ($(lineStart |- lineY)$) -- ($(lineEnd |- lineY)$);
+
+\end{tikzpicture}
+)")
+```
 
 ```{r, include=knitr::is_html_output(), results="asis"}
 cat(r"(
@@ -47,17 +64,17 @@ Distribution files should be produced under /target/distribution
 
 JRate requires three customizable text files to be located in the application’s root directory. These files can be empty but must be present. In their absence, default example content will be used.
 
-### 1. `startingInstructions.txt`
+### 1. startingInstructions.txt
 
 This file defines the initial instructions displayed to participants after they successfully enter a valid ID. Instructions are presented in a scrollable text box with no restriction on length.
 
-### 2. `terms.txt`
+### 2. terms.txt
 
 This file contains the list of terms to be rated. JRate reads the list, generates all unique pairs, and presents them randomly to the participant for similarity ratings. Results are saved in a half-matrix format, readable by PCKnot.
 
 **Important:** The total number of pairwise comparisons is calculated using the formula: **N × (N - 1) / 2**, where *N* is the number of terms. To avoid participant fatigue, it is recommended to limit the list to 15 terms or fewer, which results in 105 pairwise comparisons.
 
-### 3. `endingInstructions.txt`
+### 3. endingInstructions.txt
 
 This file contains the final instructions shown upon task completion. Like the starting instructions, this content is displayed in a scrollable window and may be of any length. It is typically used for debriefing.
 
@@ -91,11 +108,23 @@ The interface clears the previous selection before displaying a new pair of term
 
 After all term pairs have been rated, the participant is shown the ending instructions.
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-cat(r"(\includegraphics[width=50px]{img/themadstatter.png})")
-```
-
 ## About The Mad Statter <img src="src/readme/img/themadstatter.png" align="right" width="125px" />
+
+```{r, include=knitr::is_latex_output(), results="asis"}
+cat(r"(
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north east] (img) at ($(current page.north east) + (-1in,-5.95in)$)
+        {\includegraphics[width=0.1\textwidth]{img/themadstatter.png}};
+
+    \coordinate (lineY) at ($(img.center) + (-3in, -0.25)$);
+    \coordinate (lineStart) at ($(current page.west) + (1in,0)$);
+    \coordinate (lineEnd) at ($(img.west) + (-0.5cm,0)$);
+
+    \draw[thick] ($(lineStart |- lineY)$) -- ($(lineEnd |- lineY)$);
+
+\end{tikzpicture}
+)")
+```
 
 [The Mad Statter](https://www.themadstatter.com) is a premier statistical consulting and programming firm dedicated to delivering rigorous, data-driven solutions tailored to meet the unique needs of researchers, businesses, and organizations. Combining deep expertise in statistics, advanced programming skills, and industry best practices, The Mad Statter empowers clients to unlock insights, optimize decision-making, and drive impactful outcomes.
 
